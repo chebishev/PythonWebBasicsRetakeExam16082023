@@ -1,69 +1,37 @@
+{% extends 'shared/base.html' %}
+{% block main %}
 <!-- Title of the Page -->
 <h2>Current Events</h2>
 
 <!-- The Main Content for the Dashboard Event section -->
 <section id="dashboard">
-
+    {% if not events %}
     <!-- Display paragraph: If there are no events yet -->
     <h4>There are no Events in the Dashboard!</h4>
 
     <!-- Display a <div> with information about every post (if any)-->
-
+    {% else %}
     <!-- First Card-Box in dashboard -->
+        {% for event in events %}
     <div class="event">
         <!-- Event Image -->
-        <img src="/static/images/robert_de_niro_themed_party.jpg" alt="Robert De Niro Themed Party Image"/>
+        <img src="{{ event.event_image }}" alt="{{ event.event_name }}"/>
 
         <!-- Event Name -->
         <div class="event-details">
             <p class="title">
-                Robert De Niro Themed Party
+                {{ event.event_name }}
             </p>
 
             <!-- Event Date -->
-            <p class="date">15.04.2023</p>
+            <p class="date">{{ event.date }}</p>
         </div>
 
         <!-- Details Button -->
-        <a class="details-btn" href="#">Details</a>
+        <a class="details-btn" href="{% url 'event_details' event.id %}">Details</a>
     </div>
-
-    <!-- Second Card-Box in dashboard -->
-    <div class="event">
-        <!-- Event Image -->
-        <img src="/static/images/fun_run.jpg" alt="Fun Run Image"/>
-
-        <!-- Event Name -->
-        <div class="event-details">
-            <p class="title">
-                Fun Run
-            </p>
-
-            <!-- Event Date -->
-            <p class="date">19.04.2023</p>
-        </div>
-
-        <!-- Details Button -->
-        <a class="details-btn" href="#">Details</a>
-    </div>
-
-    <!-- Third Card-Box in dashboard -->
-    <div class="event">
-        <!-- Event Image -->
-        <img src="/static/images/art_and_wine.jpg" alt="Art & Wine Image"/>
-
-        <!-- Event Name -->
-        <div class="event-details">
-            <p class="title">
-                Art & Wine
-            </p>
-
-            <!-- Event Date -->
-            <p class="date">17.04.2023</p>
-        </div>
-
-        <!-- Details Button -->
-        <a class="details-btn" href="#">Details</a>
-    </div>
+        {% endfor %}
+    {% endif %}
 </section>
 <!-- End Dashboard Event section -->
+{% endblock %}

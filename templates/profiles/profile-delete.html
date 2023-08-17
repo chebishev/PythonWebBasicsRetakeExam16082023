@@ -1,11 +1,13 @@
+{% extends 'shared/base.html' %}
+{% block main %}
 <!-- The Main Content for the Delete Profile section -->
 <section id="delete-page">
     <div class="form" id="delete-profile">
 
         <!-- Delete Profile Form -->
-        <form id='delete'>
+        <form id='delete' method="POST">
             <h2>Are you sure you want to delete your profile?</h2>
-
+            {% csrf_token %}
             <!-- Confirm Button -->
             <input class="btn submit" type="submit" value="Confirm">
 
@@ -14,3 +16,4 @@
     </div>
 </section>
 <!-- End Delete Profile section -->
+{% endblock %}

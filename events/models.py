@@ -33,7 +33,7 @@ class EventModel(models.Model):
         null=True,
         verbose_name='Description'
     )
-    date = models.DateTimeField(
+    date = models.DateField(
         verbose_name='Date',
         validators=[
             validate_date,

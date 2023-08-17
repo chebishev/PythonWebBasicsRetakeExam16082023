@@ -1,3 +1,7 @@
+{% extends 'shared/base.html' %}
+{% block main %}
+
+
 <!-- The Main Content for the Edit Profile section -->
 <section id="edit">
     <div class="form">
@@ -5,54 +9,10 @@
         <h2>Edit Profile</h2>
 
         <!-- Edit Profile Form -->
-        <form class="edit-form">
+        <form class="edit-form" method="POST">
 
-            <!-- First Name Field -->
-            <label for="first_name">First Name:</label>
-            <input
-                    type="text"
-                    name="first_name"
-                    maxlength="20"
-                    id="first_name"
-            />
-
-            <!-- Last Name Field -->
-            <label for="last_name">Last Name:</label>
-            <input
-                    type="text"
-                    name="last_name"
-                    minlength="4"
-                    maxlength="30"
-                    id="last_name"
-            />
-
-            <!-- Email Field -->
-            <label for="emil">Email:</label>
-            <input
-                    type="text"
-                    name="email"
-                    value="john.smith@gmail.com"
-                    maxlength="254"
-                    id="email"
-            />
-
-            <!-- Profile Picture Field -->
-            <label for="profile_picture">Profile Picture:</label>
-            <input
-                    type="url"
-                    name="profile_picture"
-                    id="profile_picture"
-            />
-
-            <!-- Password Field -->
-            <label for="password">Password:</label>
-            <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    value="*****"
-            />
-
+            {% csrf_token %}
+            {{ form }}
             <!-- Edit Button -->
             <input class="btn submit" type="submit" value="Edit">
 
@@ -61,3 +21,4 @@
     </div>
 </section>
 <!-- End Edit Profile section -->
+{% endblock %}

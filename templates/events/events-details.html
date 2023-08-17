@@ -1,3 +1,5 @@
+{% extends 'shared/base.html' %}
+{% block main %}
 <!-- The Main Content for the Details Event section -->
 <section id="details">
     <!-- Title of the Page -->
@@ -5,38 +7,35 @@
     <div id="details-wrapper">
 
         <!-- Event Image -->
-        <img id="details-img" class="event-image" src="/static/images/robert_de_niro_themed_party.jpg"
-             alt="Robert De Niro Themed Party Image"/>
+        <img id="details-img" class="event-image" src="{{ event.event_image }}"
+             alt="{{ event.event_name }}"/>
 
         <!-- Event Name -->
-        <p id="details-title">Robert De Niro Themed Party</p>
+        <p id="details-title">{{ event.event_name }}</p>
 
         <!-- Event Category -->
         <p id="details-event">
-            Category: <span id="categories">Theme Party</span>
+            Category: <span id="categories">{{ event.category }}</span>
         </p>
 
         <!-- Event Date -->
         <p id="details-event">
-            Date: <span id="date">15.07.2023</span></p>
+            Date: <span id="date">{{ event.date }}</span></p>
 
         <!-- Event Description -->
         <div id="info">
-            <div id="details-description">Welcome to the ultimate Robert De Niro themed party! If you're a fan of
-                this legendary actor's films and characters, then this is the party for you.
-                Entertainment can include a De Niro movie trivia game, a dance-off to classic songs from his films,
-                and even an impression contest where guests can try their best De Niro impressions.
-                End the night with a screening of one of De Niro's greatest films, followed by a toast to the man
-                himself. Your guests will be talking about this unforgettable party for years to come!
+            <div id="details-description">
+            {{ event.description }}
             </div>
 
         </div>
 
         <!-- Edit and Delete buttons -->
         <div id="action-buttons">
-            <a href="#" id="edit-btn">Edit</a>
-            <a href="#" id="delete-btn">Delete</a>
+            <a href="{% url 'edit_event' event.id %}" id="edit-btn">Edit</a>
+            <a href="{% url 'delete_event' event.id %}" id="delete-btn">Delete</a>
         </div>
     </div>
 </section>
 <!-- End Details Event section -->
+{% endblock %}

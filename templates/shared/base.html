@@ -24,7 +24,7 @@
         <nav>
 
             <!-- If the user has not created a profile yet -->
-            {% if not profile_exists %}
+            {% if not profile %}
             <div class="guest">
                 <a href="{% url 'profile_create' %}">Create Profile</a>
             </div>

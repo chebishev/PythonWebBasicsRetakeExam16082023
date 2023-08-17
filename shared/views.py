@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from events.models import EventModel
+
 
 # Create your views here.
 def index(request):
@@ -7,4 +9,5 @@ def index(request):
 
 
 def dashboard(request):
-    return render(request, 'events/dashboard.html')
+    events = EventModel.objects.all()
+    return render(request, 'events/dashboard.html', {'events': events})
